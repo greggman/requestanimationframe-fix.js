@@ -29,10 +29,10 @@ will get delayed until are on screen.
 
 ##Examples:
 
-[Here's an example of 12 iframes, all running using standard rAF](examples/lots-of-iframes.html).
+[Here's an example of 12 iframes, all running using standard rAF](http://greggman.github.io/requestanimationframe-fix.js/examples/lots-of-iframes.html).
 It will likely run slow.
 
-[Here's an example using the fix](examples/lots-of-iframes-polyfill.html). It should run much faster.
+[Here's an example using the fix](http://greggman.github.io/requestanimationframe-fix.js/examples/lots-of-iframes-polyfill.html). It should run much faster.
 
 ##Usage:
 
