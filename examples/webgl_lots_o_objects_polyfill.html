@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>three.js webgl - lots</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			html, body {
+				width: 100%;
+				height: 100%;
+				margin: 0px;
+				overflow: hidden;
+			}
+
+			canvas {
+				width: 100%;
+				height: 100%;
+			}
+
+			#stats { position: absolute; top:0; left: 0; z-index: 10; }
+		</style>
+	</head>
+	<body>
+
+		<script src="../requestanimationframe-fix.js"></script>
+		<script src="three.min.js"></script>
+		<script src="stats.min.js"></script>
+
+		<script>
+
+		var container, stats;
+
+		var camera, scene, renderer;
+
+		var mesh, group1, group2, group3, light;
+
+		var clock = 0;
+
+		init();
+		animate();
+
+		function init() {
+
+			container = document.body;
+
+			camera = new THREE.PerspectiveCamera( 20, 1, 1, 10000 );
+			camera.position.z = 1800;
+
+			scene = new THREE.Scene();
+
+			light = new THREE.DirectionalLight( 0xffffff );
+			light.position.set( 0, 0, 1 ).normalize();
+			scene.add( light );
+
+			light = new THREE.DirectionalLight( 0xffffff );
+			light.position.set( 0, 0, -1 ).normalize();
+			scene.add( light );
+
+			var sphere = new THREE.SphereGeometry( 50, 32, 16 );
+
+			var num = 3;
+			var spread = 200;
+			for (var zz = -num; zz <= num; ++zz) {
+				for (var yy = -num; yy <= num; ++yy) {
+					for (var xx = -num; xx <= num; ++xx) {
+						var color =
+							((((zz + num) * 255 / num * 2) | 0) << 16) |
+							((((yy + num) * 255 / num * 2) | 0) <<  8) |
+							((((xx + num) * 255 / num * 2) | 0) <<  0) ;
+						var material = new THREE.MeshLambertMaterial( { color: color, shading: THREE.FlatShading } )
+
+						group1 = new THREE.Mesh( sphere, material );
+						group1.position.x = xx * spread;
+						group1.position.y = yy * spread;
+						group1.position.z = zz * spread;
+						scene.add( group1 );
+					}
+				}
+			}
+
+			renderer = new THREE.WebGLRenderer( { antialias: true } );
+			container.appendChild( renderer.domElement );
+			renderer.setSize( renderer.context.canvas.clientWidth, renderer.context.canvas.clientHeight, false );
+
+			stats = new Stats();
+			container.appendChild( stats.domElement );
+
+
+		}
+
+		//
+
+		function animate() {
+
+			render();
+
+			stats.update();
+			requestAnimationFrame( animate );
+
+		};
+
+		function render() {
+
+			clock += 0.01;
+
+			camera.aspect = renderer.context.canvas.clientWidth / renderer.context.canvas.clientHeight;
+			camera.updateProjectionMatrix();
+
+			camera.position.x = Math.cos(clock) * 1800;
+			camera.position.z = Math.sin(clock) * 1800;
+
+			camera.lookAt( scene.position );
+
+			renderer.render( scene, camera );
+
+		}
+
+		</script>
+
+	</body>
+</html>
+

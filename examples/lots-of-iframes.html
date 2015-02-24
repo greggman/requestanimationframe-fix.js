@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lots of RAF iframes</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+    iframe {
+      width: 400px;
+      height: 300px;
+      margin: 2em;
+      border: 1px solid black;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<h1>A typical page using WebGL to diagram live examples</h1>
+<p>
+Likely the iframes in this page run slower than 60fps.
+</p><p>
+This is because the browser does not check if the iframes needing
+a RAF event are actually on the screen
+</p><p>
+This makes it so using WebGL to explain things (for example a page
+about Physics) with lots of WebGL based diagrams problematic.
+</p><p>
+Hopefully browsers will fix this issue.
+</p><p>
+<a href="lots-of-iframes-polyfill.html">Compare to the wrapped version</a>.
+</p>
+</body>
+<script>
+// make iframes because I'm too lazy to type them by hand
+var numIFrames = 12;
+for (var ii = 0; ii < numIFrames; ++ii) {
+  var div = document.createElement("h1");
+  div.innerHTML = "Example: " + (ii + 1);
+  document.body.appendChild(div);
+  var iframe = document.createElement("iframe");
+  iframe.src = "webgl_lots_o_objects.html";
+  document.body.appendChild(iframe);
+}
+</script>
+</html>

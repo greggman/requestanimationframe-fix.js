@@ -1,0 +1,34 @@
+{
+  "name": "requestanimationframe-fix.js",
+  "version": "0.0.1",
+  "authors": [
+    "Gregg Tavares <github@greggman.com>"
+  ],
+  "description": "Fix for requestAnimationFrame with lots of elements",
+  "main": "requestanimationframe-fix.js",
+  "moduleType": [
+    "globals",
+    "amd"
+  ],
+  "keywords": [
+    "raf",
+    "requestAnimationFrame",
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/greggman/requestanimationframe-fix.js",
+  "ignore": [
+    "**/.*",
+    "*.md",
+    "Gruntfile.js",
+    "package.json",
+    "bower.json",
+    "node_modules",
+    "docs",
+    "bower_components",
+    "test",
+    "tests",
+    "examples"
+  ],
+  "dependencies": {
+  }
+}
