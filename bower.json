@@ -12,7 +12,7 @@
   ],
   "keywords": [
     "raf",
-    "requestAnimationFrame",
+    "requestAnimationFrame"
   ],
   "license": "MIT",
   "homepage": "https://github.com/greggman/requestanimationframe-fix.js",
