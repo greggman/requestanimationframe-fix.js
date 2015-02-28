@@ -1,6 +1,6 @@
 {
   "name": "requestanimationframe-fix.js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "authors": [
     "Gregg Tavares <github@greggman.com>"
   ],
@@ -29,6 +29,5 @@
     "tests",
     "examples"
   ],
-  "dependencies": {
-  }
+  "dependencies": {}
 }
