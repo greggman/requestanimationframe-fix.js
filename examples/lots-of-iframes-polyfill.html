@@ -36,6 +36,11 @@ for (var ii = 0; ii < numIFrames; ++ii) {
   var iframe = document.createElement("iframe");
   iframe.src = "webgl_lots_o_objects_polyfill.html";
   document.body.appendChild(iframe);
+  for (var jj = 0; jj < 24; ++jj) {
+    var div = document.createElement("div");
+    div.appendChild(document.createTextNode(jj.toString() + ": more below"));
+    document.body.appendChild(div);
+  }
 }
 </script>
 </html>

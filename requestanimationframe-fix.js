@@ -95,27 +95,45 @@
     return isVisible && isFrameVisible(window);
   };
 
+  var rafIds = {};
+  var nextRafId = 1;
+
   // Replace requestAnimationFrame.
   window.requestAnimationFrame = (function(oldRAF) {
-
     return function(callback, element) {
+      var rafId = nextRafId++;
+
       var handler = function() {
+        delete rafIds[rafId];
         if (isOnScreen(element)) {
-          oldRAF(callback, element);
+          rafIds[rafId] = oldRAF(function() {
+            delete rafIds[rafId];
+            callback();
+          }, element);
         } else {
-          oldRAF(handler, element);
+          rafIds[rafId] = oldRAF(handler, element);
         }
       };
       handler();
+
+      return rafId;
     };
 
   }(window.requestAnimationFrame));
 
+  window.cancelAnimationFrame = (function(oldCAF) {
+
+    return function(rafId) {
+      oldCAF(rafIds[rafId]);
+    };
+
+  }(window.cancelAnimationFrame));
+
 }());
 
 // AMD support. There's nothing to return.
-if (window.define !== undefined && typeof window.define === "function") {
-  window.define([], function() { return {}; });
+if (typeof define === "function" && define.amd) {
+  define([], function() { return {}; });
 }
 
 
