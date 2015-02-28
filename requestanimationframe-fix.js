@@ -131,9 +131,5 @@
 
 }());
 
-// AMD support. There's nothing to return.
-if (typeof define === "function" && define.amd) {
-  define([], function() { return {}; });
-}
 
 
