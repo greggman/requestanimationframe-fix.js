@@ -3,24 +3,23 @@ requestanimationframe-fix.js
 
 The issue this fixes: You've got a page with many canvases each independently
 using requestAnimationFrame (rAF) to handle animation. Most browsers as of March 2015
-don't check if the canvas is off the screen. In fact in a stunningly bad API design
+don't check if the canvas is off the screen. It seems a little short sited
 the default use case of rAF doesn't give the browser enough information to know
 if your canvas is off the screen since by default rAF doesn't require you to tell
 it which element you care about.
 
-The signature for rAF is
+I thought the signature for rAF was
 
    requestAnimationFrame(callback, optionalElement)
 
-Ideally everyone would pass in an element but almost no one does. No browser that
-I know of actually looks at the second parameter. [Oh, I see, double checking they
-stupidly removed the second parameter](http://www.w3.org/TR/animation-timing/) :(
+I at least I remember that being a consession to this issue I brought up
+when rAF was designed but [checking the spec I see there is no second parameter](http://www.w3.org/TR/animation-timing/) :(
 
 Why is this a problem? Imagine you're making a webpage about physics. Every 2 or 3 paragraphs
-you have an animated diagram using rAF. In total you have 15 diagrams as you
-go down the page. Because of this poor API design every diagram is always running even
+you have an interactive animated diagram using rAF. In total you have 15 diagrams as you
+go down the page. Because of the API design every diagram is always running even
 though at any one time only 1 to 3 of them are visible. You find that your diagrams
-are running janky at 10fps instead of smooth at 60fps.
+are running janky at 5-10fps instead of smooth at 60fps.
 
 Well, this fix implements the second parameter so if passed it will check that
 element is on screen. It will also check iframes so if your various examples
