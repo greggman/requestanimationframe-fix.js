@@ -10,7 +10,7 @@ it which element you care about.
 
 I thought the signature for rAF was
 
-   requestAnimationFrame(callback, optionalElement)
+    requestAnimationFrame(callback, optionalElement)
 
 I at least I remember that being a consession to this issue I brought up
 when rAF was designed but [checking the spec I see there is no second parameter](http://www.w3.org/TR/animation-timing/) :(
