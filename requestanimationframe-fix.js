@@ -110,16 +110,12 @@
       var handler = function() {
         delete rafIds[rafId];
         if (isOnScreen(element)) {
-          rafIds[rafId] = oldRAF(function() {
-            delete rafIds[rafId];
-            callback();
-          }, element);
+          callback.call(null, arguments);
         } else {
           rafIds[rafId] = oldRAF(handler, element);
         }
       };
-      handler();
-
+      ravIds[rafId] = oldRAF(handler, element);
       return rafId;
     };
 
