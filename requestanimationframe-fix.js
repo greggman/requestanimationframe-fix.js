@@ -115,7 +115,8 @@
           rafIds[rafId] = oldRAF(handler, element);
         }
       };
-      ravIds[rafId] = oldRAF(handler, element);
+
+      rafIds[rafId] = oldRAF(handler, element);
       return rafId;
     };
 
@@ -124,7 +125,9 @@
   window.cancelAnimationFrame = (function(oldCAF) {
 
     return function(rafId) {
-      oldCAF(rafIds[rafId]);
+      var realId = rafIds[rafId];
+      delete rafIds[rafId];
+      oldCAF(realId);
     };
 
   }(window.cancelAnimationFrame));
