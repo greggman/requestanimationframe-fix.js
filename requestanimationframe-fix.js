@@ -107,10 +107,10 @@
     return function(callback, element) {
       var rafId = nextRafId++;
 
-      var handler = function() {
+      var handler = function(time) {
         delete rafIds[rafId];
         if (isOnScreen(element)) {
-          callback.call(null, arguments);
+          callback.apply(null, arguments);
         } else {
           rafIds[rafId] = oldRAF(handler, element);
         }
