@@ -1,6 +1,6 @@
 {
   "name": "requestanimationframe-fix.js",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "authors": [
     "Gregg Tavares <github@greggman.com>"
   ],
