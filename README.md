@@ -33,6 +33,13 @@ It will likely run slow.
 
 [Here's an example using the fix](http://greggman.github.io/requestanimationframe-fix.js/examples/lots-of-iframes-polyfill.html). It should run much faster.
 
+## Deferred Loading
+
+You can also use it to defer loading of a iframe. Just set a rAF on the iframe itself to
+set its src. It won't be called until it frame is on screen.
+
+[Here's an example](http://greggman.github.io/requestanimationframe-fix.js/examples/lots-of-iframes-polyfill-deferred-loading.html)
+
 ##Usage:
 
 include it on every page that uses rAF
