@@ -1,0 +1,27 @@
+{
+  "name": "requestanimationframe-fix.js",
+  "version": "0.0.9",
+  "description": "Makes requestanimation frame only call if specified element is on screen",
+  "main": "requestanimationframe-fix.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/greggman/requestanimationframe-fix.js.git"
+  },
+  "keywords": [
+    "requestanimationframe",
+    "html5",
+    "raf"
+  ],
+  "author": "Gregg Tavares",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/greggman/requestanimationframe-fix.js/issues"
+  },
+  "homepage": "https://github.com/greggman/requestanimationframe-fix.js"
+}
